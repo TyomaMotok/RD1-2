@@ -1,0 +1,344 @@
+
+
+.page {
+    background-color: rgb(48,49,54);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.page::before{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    z-index: 400;
+    animation: back-gr-opacity 1s ease 23.8s forwards;
+}
+@keyframes back-gr-opacity{
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0.9); 
+    }
+}
+
+p{
+    font-size: 100px;
+    position: absolute;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    z-index: 600;
+    text-shadow: 0;
+    transition: text-shadow 0.3s ease;
+}
+
+p:hover{
+    text-shadow: 5px 5px 30px rgb(225, 176, 0);
+}
+
+.over__game-txt{
+    left: 0;
+    top: -100px;
+    animation: text-appear-game 1s linear 24s forwards, align-text-game 1s ease 25.2s forwards, move-txt-closer-game 0.5s ease 26.5s forwards ;
+}
+.over__over-txt{
+    transform: translate(300px, 0);
+    left: 0;
+    bottom: -100px;
+    animation: text-appear 0.5s ease-in 24s forwards, align-text-over 1s ease 25.2s forwards, move-txt-closer-over 0.5s ease 26.5s forwards;
+}
+@keyframes text-appear{
+    0%{
+        bottom: -100px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes text-appear-game{
+    0%{
+        top: -100px;
+    }
+    100%{
+        top: 0;
+    }
+}
+
+@keyframes align-text-game{
+    0%{
+        transform: translate(0, 0);
+    }
+    100%{
+        transform: translate(150px, 0);
+    }
+}
+
+@keyframes align-text-over{
+    0%{
+        transform: translate(300px, 0);
+    }
+    100%{
+        transform: translate(150px, 0);
+    }
+}
+
+@keyframes move-txt-closer-over{
+    0%{
+        transform: translate(150px, 0px);
+    }
+    100%{
+        transform: translate(150px, -260px);
+    }
+}
+
+@keyframes move-txt-closer-game{
+    0%{
+        transform: translate(150px, 0px);
+    }
+    100%{
+        transform: translate(150px, 260px);
+    }
+}
+
+
+
+.page__container {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+}
+.page__contant {
+}
+.page__block {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+    background-color: rgb(38,38,38);
+    border: 1px solid #000;
+}
+
+.block__stick {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 1px;
+    background-color: rgb(255,100,71);
+}
+
+.block{
+    animation-name: rotate;
+    animation-duration: 8s;
+    transform: origin: 0 0;
+    animation: block-rotate-second 1s ease 11.3s forwards, rotate 8s, straight-line 0.5s cubic-bezier(0, 1.94, 1, 1.68) 13s forwards;
+}
+.block__stick{ 
+ animation: move-stick 8s, stick-rotate 2s linear 8s forwards, stick-ball-shifted 2s ease 11.5s forwards, stick-falls-ball 0.5s linear 20.8s forwards; 
+}
+
+/* .block{
+    animation-name: shake;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0, 1.65, 1, 1);
+    animation-delay: 16s;
+} */
+/* 
+@keyframes shake{
+    0%{
+        transform: translate(0, 0);
+    }
+    50%{
+        transform: translate(0, -50px) ;
+    }
+    100%{
+        transform: translate(0, 0);
+    }
+} */
+
+.ball_style{
+    width: 50px;
+    border-radius: 50px;
+    height: 50px;
+    background-color: rgba(163, 0, 0, 0.5);
+    position: absolute;
+}
+
+.ball{
+    top: -50px;
+    left: 0;
+    animation: ball-fall 2s linear 10s forwards, ball-flies-up 1s ease 13s forwards;
+}
+
+
+
+.ball-two{
+    right: 0;
+    top: -50px;
+    animation: ball-two-fall 0.5s ease 12.5s forwards, ball-two-rolling 7s linear 13.5s forwards, ball-two-bottom-zero 3s linear 20.7s forwards;
+}
+
+.ball-hole{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #000;
+    bottom: -80px;
+    left: 80px;
+    z-index: 200;
+    animation: ball-hole-appear 0.1s ease-in 22.5s forwards;
+}
+
+
+@keyframes ball-hole-appear{
+    0%{
+        bottom: -80px;
+    }
+    100%{
+        bottom: 5px;
+    }
+}
+
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(70deg);
+    }
+    100%{
+        transform: rotate(0deg); 
+    }
+}
+
+
+@keyframes move-stick{
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 60%;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+@keyframes stick-rotate{
+    0%{
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+    100%{
+        transform: rotate(-90deg);
+        transform-origin: top right;
+    }
+}
+
+
+@keyframes ball-fall{
+    0%{
+        top: -50px;
+    }
+    100%{
+        top: 440px;
+    }
+}
+
+@keyframes block-rotate-second{
+    0%{
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+    100%{
+        transform: rotate(-20deg);
+        transform-origin: top right;
+    }
+}
+
+@keyframes stick-ball-shifted{
+    0%{
+        transform: rotate(-90deg);
+        transform-origin: top right;
+    }
+    100%{
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+}
+
+@keyframes ball-two-fall{
+    0%{
+       top: -50px; 
+    }
+    100%{
+        top: 270px;
+    }
+}
+
+@keyframes straight-line{
+    0%{
+        transform: rotate(-20deg);
+        transform-origin: top right;
+    }
+    100%{
+        transform: rotate(0deg);
+        transform-origin: top right;
+    }
+}
+
+@keyframes ball-flies-up{
+    0%{
+        top: 440px;
+    }
+    100%{
+        top: -50%;
+    }
+}
+
+@keyframes ball-two-rolling{
+    0%{
+        transform: translate(0, 0);
+    }
+    100%{
+        transform: translate(-360px, 0);
+    }
+}
+
+@keyframes stick-falls-ball{
+    0%{
+        transform: rotate(0deg);
+        transform-origin: 0 0;
+    }
+    100%{
+        transform: rotate(20deg);
+        transform-origin: 0 0;
+    }
+}
+
+@keyframes ball-two-bottom-zero{
+    0%{
+        z-index: 100;
+        top: 270px;
+    }
+    100%{
+        z-index: 100;
+        top: 650px;
+    }
+}
+
+
+
+
+
